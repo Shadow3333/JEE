@@ -56,6 +56,11 @@ public class AnnuaireController {
         return pers;
     }
 	
+	@RequestMapping(value = "/")
+    public String racine() {
+        return "index";
+    }
+	
 	/**
 	 * @return String
 	 */

@@ -1,7 +1,10 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 
 <c:url var="inscription" value="/goto/Annuaire/new" />
+<c:url var="logout" value="/goto/Annuaire/logout" />
 <c:url var="login" value="/goto/Annuaire/login" />
+<c:url var="edit" value="/goto/Annuaire/edit" />
+<c:url var="newGroup" value="/goto/Annuaire/newgroup" />
 
 <html>
 <head>
