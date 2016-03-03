@@ -18,6 +18,7 @@ public class MailerSTMP implements Mailer{
 			Properties prop = System.getProperties();
 			prop.put("mail.smtp.host", serveur);
 			prop.put("mail.smtp.starttls.enable", "true");
+			prop.put("mail.smtp.port", "465");
 			Session session = Session.getDefaultInstance(prop, null);
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("Recovery@annuaire.com"));
@@ -35,10 +36,5 @@ public class MailerSTMP implements Mailer{
 		catch (AddressException e) {e.printStackTrace();}
 		catch (MessagingException e){e.printStackTrace();}
 		return result;
-	}
-
-	public static void main(String[] args) {
-		MailerSTMP m = new MailerSTMP();
-		m.sendmail("aabzeazjenazejbakzezae@yopmail.com", "mon texte");
 	}
 }

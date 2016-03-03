@@ -175,4 +175,8 @@ public class InMemoryAnnuaire implements AnnuaireManager {
 	public Group addGroup(Group gr) {
 		return DAO_gp.addGroup(gr);
 	}
+
+	public List<Person> findByGroup(String nameGr) {
+		return DAO_pers.findByGroup(nameGr);
+	}
 }

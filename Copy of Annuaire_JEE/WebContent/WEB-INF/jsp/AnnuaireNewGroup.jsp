@@ -1,15 +1,21 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:url var="home" value="/goto/Annuaire/list" />
-
 <html>
 <head>
 	<title>Liste_pers :: Spring Application</title>
 	<link href="<c:url value="/ressources/css/annuaireDetails.css" />" rel="stylesheet">
 </head>
 <body>
-	<button class="btn" onclick="location.href='${ home }'"> Home</button>
+	<div>
+		<button class="btn" onclick="location.href='${ home }'"> Home</button>
+		<button class="btn" onclick="location.href='${ fullList }'"> Full List</button>
+		<button class="btn" onclick="location.href='${ edit }'"> edit profile</button>
+		<button class="btn" onclick="location.href='#'"> Create group</button>
+		<button class="btn" onclick="location.href='${ logout }'"> Logout</button>
+		<span class="logged"> you are Logged as <c:out value="${pers.name}"/> </span>
+	</div>
+	<br/>
     <span class="myTitleList">New Group</span>
     <form action="newgroup" method="POST">
     	<table>

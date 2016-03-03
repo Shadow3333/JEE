@@ -1,7 +1,5 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 
-<c:url var="edit" value="/goto/Annuaire/edit" />
-
 <html>
 <head>
 	<title>Err :: Annuaire</title>

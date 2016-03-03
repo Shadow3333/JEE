@@ -72,7 +72,7 @@ public class AnnuaireController {
         logger.info("login user " + pers.getName());
         model.addAttribute("logged", "");
     	model.addAttribute("unlogged", "none");
-        return "AnnuaireList";
+        return "AnnuaireListGroups";
     }
     
     /**
@@ -106,7 +106,7 @@ public class AnnuaireController {
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String editPers(ModelMap model) {
     	if (pers == null || pers.getIdP() == null) {
-    		return "redirect:list";			
+    		return "redirect:listGroups";			
 		}
     	model.addAttribute("pers", pers);
     	model.addAttribute("gr_list", manager.findAllGroups());
@@ -129,7 +129,7 @@ public class AnnuaireController {
     		manager.savePers(p);
     		pers.copy(p);
     	}
-		return "redirect:list"; // anciennement return "productsList" => F5 =
+		return "redirect:groupsList"; // anciennement return "productsList" => F5 =
 								// ajout d'un nouveau produit
 	}
     
@@ -153,7 +153,7 @@ public class AnnuaireController {
 			return "AnnuaireNewPerson";
 		}
 		manager.savePers(p);
-		return "redirect:list"; // anciennement return "productsList" => F5 =
+		return "redirect:groupsList"; // anciennement return "productsList" => F5 =
 								// ajout d'un nouveau produit
 	}
 
@@ -167,7 +167,7 @@ public class AnnuaireController {
 		pers.setPwd("p0");
 		model.addAttribute("logged", "none");
 		model.addAttribute("unlogged", "");
-        return "AnnuaireList";
+        return "AnnuaireListGroups";
     }
     
     /**
@@ -211,13 +211,13 @@ public class AnnuaireController {
     	manager.savePers(p);
 		pers.copy(p);
 		manager.deleteLink(p.getMail());
-        return "redirect:list";
+        return "redirect:groupsList";
     }
     
     /**
      * @return String
      */
-    @RequestMapping(value = "/newgroup", method = RequestMethod.GET)
+    @RequestMapping(value = "/newGroup", method = RequestMethod.GET)
     public String gotoNewGroup() {
     	new ModelAndView("AnnuaireNewGroup");
         return "AnnuaireNewGroup";
@@ -226,7 +226,7 @@ public class AnnuaireController {
     /**
      * @return String
      */
-    @RequestMapping(value = "/newgroup", method = RequestMethod.POST)
+    @RequestMapping(value = "/newGroup", method = RequestMethod.POST)
     public String NewGroup(ModelMap model, HttpServletRequest request) {
     	String nameGr = request.getParameter("nameGr");
     	String years = request.getParameter("years");
@@ -237,7 +237,7 @@ public class AnnuaireController {
 			return "AnnuaireNewGroup";
 		}
     	manager.addGroup(g);
-    	return "redirect:list";
+    	return "redirect:groupsList";
     }
 
     /**
@@ -258,15 +258,15 @@ public class AnnuaireController {
 		}
     	recoveryManager rM = recoveryManager.init();
     	rM.resetPwd(mail);
-    	return "redirect:list";
+    	return "redirect:groupsList";
     }
     
     /**
      * @return String
      */
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/fullList", method = RequestMethod.GET)
 	public String list(ModelMap model) {
-		logger.info("AnnuaireList");
+		logger.info("AnnuaireFullList");
 		if (pers == null || pers.getIdP() == null) {
 			model.addAttribute("logged", "none");
 			model.addAttribute("unlogged", "");
@@ -276,7 +276,7 @@ public class AnnuaireController {
 			model.addAttribute("logged", "");
 			model.addAttribute("unlogged", "none");
 		}
-		return "AnnuaireList";
+		return "AnnuaireFullList";
 	}
     
     /**
@@ -286,6 +286,38 @@ public class AnnuaireController {
     Map<String, List<Person>> creatList() {
 		logger.info("Making list");
 		return manager.preparList();
+	}
+    
+    @RequestMapping(value = "/groupsList", method = RequestMethod.GET)
+	public String listGroups(ModelMap model) {
+		logger.info("AnnuaireListGroups");
+		if (pers == null || pers.getIdP() == null) {
+			model.addAttribute("logged", "none");
+			model.addAttribute("unlogged", "");
+		}
+		else
+		{
+			model.addAttribute("logged", "");
+			model.addAttribute("unlogged", "none");
+		}
+		model.addAttribute("gr_list", manager.findAllGroups());
+		return "AnnuaireListGroups";
+	}
+    
+    @RequestMapping(value = "/personsList", method = RequestMethod.GET)
+	public String listPersons(ModelMap model, @RequestParam(value = "nameGr", required = false) String nameGr) {
+		logger.info("AnnuaireListPersons");
+		if (pers == null || pers.getIdP() == null) {
+			model.addAttribute("logged", "none");
+			model.addAttribute("unlogged", "");
+		}
+		else
+		{
+			model.addAttribute("logged", "");
+			model.addAttribute("unlogged", "none");
+		}
+		model.addAttribute("Pers_list", manager.findByGroup(nameGr));
+		return "AnnuaireListPersons";
 	}
     
     /**

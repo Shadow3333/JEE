@@ -2,15 +2,19 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-<c:url var="home" value="/goto/Annuaire/list" />
-
 <html>
 <head>
 	<title>New Person :: Annuaire</title>
 	<link href="<c:url value="/ressources/css/annuaireDetails.css" />" rel="stylesheet">
 </head>
 <body>
-	<button class="btn" onclick="location.href='${ home }'"> Home</button>
+	<div>
+		<button class="btn" onclick="location.href='${ home }'"> Home</button>
+		<button class="btn" onclick="location.href='${ fullList }'"> Full List</button>
+		<button class="btn" onclick="location.href='#'"> Login</button>
+		<button class="btn" onclick="location.href='${ inscription }'"> Inscription</button>
+	</div>
+	<br/>
     <span class="myTitleList">Inscription</span>
     <form:form method="POST" commandName="pers">
 		<form:errors path="*" cssClass="errorblock" element="div" />

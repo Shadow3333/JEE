@@ -1,7 +1,5 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 
-<c:url var="home" value="/goto/Annuaire/list" />
-
 <html>
 <head>
 	<link href="<c:url value="/ressources/css/annuaireDetails.css" />" rel="stylesheet">
@@ -10,6 +8,7 @@
 <body>
 	<div>
 		<button class="btn" onclick="location.href='${ home }'"> Home</button>
+		<button class="btn" onclick="location.href='${ fullList }'"> Full List</button>
 	    <span class="myTitle" style="align:center"><c:out value="${pers.name}" /> details</span>
     </div>
     <br/><br/>

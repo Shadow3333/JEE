@@ -26,4 +26,5 @@ public interface AnnuaireManager {
 	 public Person findByMail(String mail);
 	 public Boolean deleteLink(String mail);
 	 public Group addGroup(Group gr);
+	 public List<Person> findByGroup(String nameGr);
 }

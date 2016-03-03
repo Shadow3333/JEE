@@ -1,8 +1,6 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:url var="home" value="/goto/Annuaire/list" />
-
 <html>
 <head>
 	<title>New password :: Annuaire</title>
@@ -10,6 +8,7 @@
 </head>
 <body>
 	<button class="btn" onclick="location.href='${ home }'"> Home</button>
+	<button class="btn" onclick="location.href='${ fullList }'"> Full List</button>
     <span class="myTitleList">New Password</span>
     <span class="myTitleList"><c:out value="${pers.getMail()}" /></span>
     <form action="newPassword?mail=${ pers.getMail() }" method="POST">
