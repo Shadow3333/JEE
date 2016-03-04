@@ -11,8 +11,8 @@
 	<div>
 		<button class="btn" onclick="location.href='${ home }'"> Home</button>
 		<button class="btn" onclick="location.href='${ fullList }'"> Full List</button>
-		<button class="btn" onclick="location.href='#'"> Login</button>
-		<button class="btn" onclick="location.href='${ inscription }'"> Inscription</button>
+		<button class="btn" onclick="location.href='${ login }'"> Login</button>
+		<button class="btn" onclick="location.href='#'"> Inscription</button>
 	</div>
 	<br/>
     <span class="myTitleList">Inscription</span>

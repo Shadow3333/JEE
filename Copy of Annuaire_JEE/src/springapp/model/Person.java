@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -49,8 +47,6 @@ public class Person implements Serializable{
 	@Basic(optional = false)
 	@Column(name = "mail", length = 200,
 	        nullable = false, unique = true)
-	@NotNull
-	@Size(min = 1, message = "Le mail est obligatoire")
 	private String mail;
 	
 	@Basic()
@@ -63,8 +59,6 @@ public class Person implements Serializable{
 	
 	@Basic()
 	@Column(name = "pwd", length = 50)
-	@NotNull
-	@Size(min = 1, message = "Le password est obligatoire")
 	private String pwd;
 	
 	public Person() {

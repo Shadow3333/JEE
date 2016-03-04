@@ -32,7 +32,8 @@ public class PersonValidator implements Validator {
         if (firstname != null && firstname.isEmpty() == false) {
             if (!firstname.matches("^[A-Za-z]+-?[A-Za-z]+$")) {
             	System.out.println("prob firstname1");
-                errors.rejectValue("firstname", "person.firstnameWrong", "prob firstname1");
+                errors.rejectValue("firstname" ,"person.firstnameWrong", "Field firstname is required.");
+                System.out.println(errors.getAllErrors().toString());
             }
             
             if(firstname.length() > 20) {

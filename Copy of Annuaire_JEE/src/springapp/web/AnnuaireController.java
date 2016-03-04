@@ -61,18 +61,19 @@ public class AnnuaireController {
         return "index";
     }
 	
+	
 	/**
 	 * @return String
 	 */
     @RequestMapping(value = "/logged")
     public String logged(ModelMap model) {
     	if (pers == null || pers.getIdP() == null) {
-    		return "redirect:list";
+    		return "redirect:groupsList";
 		}
         logger.info("login user " + pers.getName());
         model.addAttribute("logged", "");
     	model.addAttribute("unlogged", "none");
-        return "AnnuaireListGroups";
+        return "redirect:groupsList";
     }
     
     /**
@@ -86,10 +87,9 @@ public class AnnuaireController {
 		}
     	pers.copy(tempo);
     	
-		return "redirect:logged"; // anciennement return "productsList" => F5 =
-								// ajout d'un nouveau produit
+		return "redirect:logged";
 	}
-    
+	
     /**
      * @return String
      */
@@ -117,7 +117,7 @@ public class AnnuaireController {
      * @return String
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public String updatePers(ModelMap model, @ModelAttribute @Valid Person p, BindingResult result) {
+	public String updatePers(ModelMap model, @ModelAttribute Person p, BindingResult result) {
     	persValidator.validate(p, result);
 		if (result.hasErrors() ) {
 			model.addAttribute("pers", p);
@@ -167,7 +167,7 @@ public class AnnuaireController {
 		pers.setPwd("p0");
 		model.addAttribute("logged", "none");
 		model.addAttribute("unlogged", "");
-        return "AnnuaireListGroups";
+        return "redirect:groupsList";
     }
     
     /**

@@ -5,6 +5,18 @@
 <head>
 	<title>Edit :: Annuaire</title>
 	<link href="<c:url value="/ressources/css/annuaireDetails.css" />" rel="stylesheet">
+	<style>
+		.error {
+		    color: #ff0000;
+		}
+		.errorblock{
+		    color: #000;
+		    background-color: #ffEEEE;
+		    border: 3px solid #ff0000;
+		    padding:8px;
+		    margin:16px;
+		}
+	</style>
 </head>
 <body>
 	<div>

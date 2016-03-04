@@ -30,8 +30,8 @@
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
-				<value>/springapp/model/person</value>
-				<value>/springapp/model/group</value>
+				<value>/springapp/web/person</value>
+				<value>/springapp/web/group</value>
 			</list>
 		</property>
 	</bean>
